@@ -1,7 +1,8 @@
-#include "C:\Users\Тетяна\Downloads\Parcel.h"
-#include "C:\Users\Тетяна\Downloads\Date.h"
+#include "C:\Users\РўРµС‚СЏРЅР°\Downloads\Parcel.h"
+#include "C:\Users\РўРµС‚СЏРЅР°\Downloads\Date.h"
 #include <iostream>
 #include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -97,19 +98,18 @@ Parcel Parcel:: operator + (Parcel& c) {
     t.price = t.price + c.price;
     return t;
 }
-int Parcel:: operator < (Parcel& c) {   //за вагою та об'ємом
+int Parcel:: operator < (Parcel& c) {   //Р·Р° РІР°РіРѕСЋ С‚Р° РѕР±'С”РјРѕРј
     return ((weight < c.weight) && (volume < c.volume));
 }
-int Parcel:: operator > (Parcel& c) {   //за вагою та об'ємом
+int Parcel:: operator > (Parcel& c) {   //Р·Р° РІР°РіРѕСЋ С‚Р° РѕР±'С”РјРѕРј
     return ((weight > c.weight) && (volume > c.volume));
 }
-int Parcel:: operator == (Parcel& c) {           //за вагою,об'ємом, ціною, початковим та кінцевим відділенням
+int Parcel:: operator == (Parcel& c) {           //Р·Р° РІР°РіРѕСЋ,РѕР±'С”РјРѕРј, С†С–РЅРѕСЋ, РїРѕС‡Р°С‚РєРѕРІРёРј С‚Р° РєС–РЅС†РµРІРёРј РІС–РґРґС–Р»РµРЅРЅСЏРј
     int k = ((weight == c.weight) && (volume == c.volume) && (price == c.price) && (origin == c.origin) && (destination == c.destination));
     return k;
 }
 int Parcel:: operator != (Parcel& c) {
-    int k = ((weight != c.weight) && (volume != c.volume) && (price != c.price) && (origin != c.origin) && (destination != c.destination));
-    return k;
+   return !(*this==c);
 }
 Parcel& Parcel:: operator = (Parcel& c) {
     if (this != &c) {
@@ -120,12 +120,18 @@ Parcel& Parcel:: operator = (Parcel& c) {
         destination = c.destination;
         id = c.id;
         premium = c.premium;
-       /* delete[] sender;
-        int l = strlen(c.sender) + 1;
-        name = new char[l]; strcpy_s(sender, l, c.sender);
-        delete[] recipient;
+        /*int l = strlen(c.sender) + 1;
+        delete[] sender;
+        if (l != 0) {
+            sender = new char[l]; strcpy(sender, c.sender);
+        }
+        else sender = nullptr;
         int k = strlen(c.recipient) + 1;
-        name = new char[k]; strcpy_s(recipient, k, c.recipient);*/
+        delete[] recipient;
+        if (k != 0) {
+            recipient = new char[k]; strcpy(recipient, c.recipient);
+        }
+        else recipient = nullptr;*/
         sender = c.sender;
         recipient = c.recipient;
         sending_date = c.sending_date;
