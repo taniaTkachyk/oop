@@ -1,4 +1,4 @@
-#include "C:\Users\Тетяна\Downloads\Date.h"
+#include "C:\Users\РўРµС‚СЏРЅР°\Downloads\Date.h"
 #include <iostream>
 
 using namespace std;
@@ -31,16 +31,36 @@ void Date::print(){
 
 Date Date:: operator ++ (int i) {
     Date t(*this);
-    day++;
+    if (day == 31) {
+        if (month == 12) { day = 1; month = 1; year++; return t; }
+        day = 1; month++;
+    }
+    else day++;
     return t;
 }
-Date& Date :: operator ++ () { day++; return *this; }
+Date& Date :: operator ++ () { 
+    if (day == 31) {
+        if (month == 12) { day = 1; month = 1; year++; return *this; }
+        day = 1; month++;
+    }
+    else day++;
+    return *this; }
 Date Date:: operator -- (int i) {
     Date t(*this);
-    day--;
+    if (day == 1) {
+        if (month == 1) { day = 31; month = 12; year--; return *this; }
+        day = 31; month--;
+    }
+    else day--;
     return t;
 }
-Date& Date :: operator -- () { day--; return *this; }
+Date& Date :: operator -- () { 
+    if (day == 1) {
+        if (month == 1) { day = 31; month = 12; year--; return *this; }
+        day = 31; month--;
+    }
+    else day--; 
+    return *this; }
 ostream& operator <<(ostream& out, Date& x) {
     return out << "Date:  " << x.get_day() << "." << x.get_month() <<"."<<x.get_year();
 }
