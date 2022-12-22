@@ -5,7 +5,6 @@
 using namespace std;
 
 class Parcel{
-protected: 
     int weight;
     int volume;
     Date sending_date;
@@ -19,21 +18,21 @@ protected:
     string recipient;
 public:
     Parcel();
-    Parcel(int weight, int volume,  Date &sending_date,  Date &receiving_date, int price, int origin, int destination, int id, bool premium, string &sender, string &recipient);
-    Parcel(  Parcel &parcel);
+    Parcel(int weight, int volume, const Date &sending_date, const Date &receiving_date, int price, int origin, int destination, int id, bool premium, string &sender, string &recipient);
+    Parcel(const Parcel &parcel);
     ~Parcel()=default;
 
-    int get_weight() ;
-    int get_volume() ;
-    Date get_sending_date() ;
-    Date get_receiving_date() ;
-    int get_price() ;
-    int get_origin() ;
-    int get_destination() ;
-    int get_id() ;
-    bool get_premium() ;
-    string get_sender() ;
-    string get_recipient() ;
+    int get_weight() const;
+    int get_volume() const;
+    Date get_sending_date() const;
+    Date get_receiving_date() const;
+    int get_price() const;
+    int get_origin() const;
+    int get_destination() const;
+    int get_id() const;
+    bool get_premium() const;
+    string get_sender() const;
+    string get_recipient() const;
 
     int set_weight(int new_weight);
     int set_volume(int new_volume);
@@ -48,14 +47,11 @@ public:
     string set_recipient(string &new_recipient);
 
     void print();
-
-    Parcel operator + (Parcel&);
-    int operator < (Parcel&);
-    int operator > (Parcel&);
-    int operator == (Parcel&);
-    int operator != (Parcel&);
-    Parcel& operator = (Parcel&);
-    
-    
+    Parcel operator + (const Parcel&);
+    int operator < (const Parcel&);
+    int operator > (const Parcel&);
+    int operator == (const Parcel&);
+    int operator != (const Parcel&);
+    Parcel& operator = (const Parcel&);
 
 };
