@@ -1,33 +1,33 @@
 #pragma once
-#include <istream>
-#include <ostream>
+#include <iostream>
+#include <fstream>
 using namespace std;
 
 class Date{
-  protected:  
-      int day, month, year;
+protected:int day;
+    int month;
+    int year;
 public:
     Date();
     Date(int d, int m, int y);
-   // Date( Date &date);
+    Date(const Date &date);
     ~Date() = default;
 
-    int get_day() ;
-    int get_month();
-    int get_year();
+    int get_day() const;
+    int get_month() const;
+    int get_year() const;
 
     int set_day(int d);
     int set_month(int m);
     int set_year(int y);
 
     void print();
-
     Date operator ++ (int);
     Date& operator ++();
     Date operator -- (int);
     Date& operator --();
-    Date& operator = (Date&);
-    friend ostream& operator <<(ostream&, Date&);
+    Date& operator = (const Date&);
+    friend ostream& operator <<(ostream&,const Date&);
     friend istream& operator >>(istream&, Date&);
 
 };
