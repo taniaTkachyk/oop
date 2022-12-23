@@ -80,7 +80,7 @@ int main(){
 
 
     Date fir, sec;
-   cout << "Enter the Date:  "; cin >> fir ;
+   cout << "  Enter the Date:  "; cin >> fir ;
    cout << "Enter the Date:  "; cin >> sec;
    cout << "       BEFORE" << endl << fir << endl << sec << endl;
     fir++; sec--;
@@ -94,6 +94,11 @@ int main(){
     if (two == three) { cout << "Parsel_1 = Parsel_2" << endl; }
     if (two != three) { cout << "Parsel_1 != Parsel_2" << endl; }
     if (two > three) { cout << "Parsel_1(price) > Parsel_2(price)" << endl; }
-    if (two < three) { cout << "Parsel_1(price) < Parsel_2(price)" << endl; }
+    if (two < three) { cout << "Parsel_1(price) < Parsel_2(price)" << endl<<endl; }
+    History history(3);
+    history[1]=one;
+    history[2]=two;
+    history[3]=three;
+        history.print();
 
 }
