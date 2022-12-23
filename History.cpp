@@ -6,6 +6,9 @@ History::History(){
     this->parcels_number = db.read_number();
     this->parcels_history = db.read_data();
 }
+History::History(int i):parcels_number(i){
+    parcels_history = new Parcel [parcels_number];
+}
 
 History::History(int number, Parcel *parcels): parcels_number(number){
     this->parcels_history = new Parcel[number];
@@ -40,7 +43,7 @@ void History::update() {
 
 void History::print(){
     for(int i=0; i<parcels_number; i++){
-        parcels_history[i].print();
-    }
+        parcels_history[i].print();}
+
 }
 Parcel& History:: operator [] (int pos){ return parcels_history[pos-1] ; }
